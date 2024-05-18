@@ -6,6 +6,8 @@
 
 body {
     background-color: var(--text-dark);
+    color: var(--text-light);
+    font-family: "Montserrat", sans-serif;
 }
 
 li {
@@ -46,7 +48,6 @@ a {
 }
 
 .header-menu_link {
-    font-family: "Montserrat", sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: 0.5s ease-in-out;
@@ -54,4 +55,56 @@ a {
 
 .header-logo-img {
     width: 40px;
+}
+
+.video-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-placeholder {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#background-video {
+    display: none;
+    width: 100%;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.hero-container {
+    position: relative;
+}
+
+.title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+}
+
+.title-accent {
+    font-size: 60px;
+}
+
+.title-text {
+    font-size: 20px;
 }
