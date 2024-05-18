@@ -1,0 +1,9 @@
+@media (hover: hover) {
+    .header-menu_link:hover {
+        color: var(--text-accent);
+    }
+
+    .social-link:hover {
+        color: var(--text-accent);
+    }
+}
