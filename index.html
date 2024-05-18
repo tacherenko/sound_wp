@@ -26,7 +26,7 @@
                 </div>
                 <nav class="header-menu">
                     <ul>
-                        <li><a href="" class="header-menu_link">demo reel</a></li>
+                        <!-- <li><a href="" class="header-menu_link">demo reel</a></li> -->
                         <li><a href="" class="header-menu_link">about</a></li>
                         <li><a href="" class="header-menu_link">skills</a></li>
                         <li><a href="" class="header-menu_link">experience</a></li>
@@ -41,21 +41,26 @@
             <div class="container hero-container">
                 <div class="video-container">
                     <img src="./assets/demo-picture.jpg" alt="Static Image" class="image-placeholder" id="image-placeholder">
-                    <button class="play-button">Play DemoReel</button>
                     <video id="background-video">
                         <source src="./assets/demo.mp4" type="video/mp4">
                     </video>
                 </div>
                 <h1 class="title">
-                    WELCOME! <br>
+                    WELCOME!<br>
                     <span class="title-accent">I'm a Sound Designer</span><br>
                     <span class="title-text">I make the complex simple.</span>
                 </h1>
+                <a class="play-button"><img src="/assets/play-circle-svgrepo-com.svg" alt="play" class="play-img">Play DemoReel</a>
+                <div class="hero-social">
+                    <a href="mailto:egorpoplevka@gmail.com" class="social-link email" target="_blank">egorpoplevka@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/egor-poplevka" class="social-link linkedin" target="_blank">LinkedIn</a>
+                </div>
             </div>
         </section>
     </main>
     <script>
         const playButton = document.querySelector('.play-button');
+        const playImg = document.querySelector('.play-img');
         const imagePlaceholder = document.getElementById('image-placeholder');
         const title = document.querySelector('.title');
         const backgroundVideo = document.getElementById('background-video');
@@ -63,6 +68,7 @@
         playButton.addEventListener('click', function() {
             imagePlaceholder.style.display = 'none';
             playButton.style.display = 'none';
+            playImg.style.display = 'none';
             title.style.display = 'none';
             backgroundVideo.style.display = 'block';
             backgroundVideo.requestFullscreen();
@@ -75,7 +81,8 @@
             backgroundVideo.style.display = 'none';
             title.style.display = 'block';
             imagePlaceholder.style.display = 'block';
-            playButton.style.display = 'block';
+            playButton.style.display = 'flex';
+            playImg.style.display = 'inline-block';
             }
         });
     </script>
