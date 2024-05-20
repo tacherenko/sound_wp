@@ -225,6 +225,27 @@ a {
     left: 10%;
 }
 
+.skills-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+}
+
+.skills-text {
+    max-width: 40%;
+}
+
+.skills-about {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.skills-info-text {
+    font-size: 18px;
+}
+
 .footer-container {
     display: flex;
     flex-direction: row;
@@ -258,9 +279,8 @@ a {
     font-size: 16px;
 }
 
-.footer-subtitle {
+.footer-subtitle, .subtitle-text {
     text-transform: uppercase;
     font-weight: 400;
-    text-align: center;
     font-size: 22px;
 }
