@@ -41,9 +41,6 @@
             <div class="container hero-container">
                 <div class="video-container">
                     <img src="./assets/demo-picture.jpg" alt="Static Image" class="image-placeholder" id="image-placeholder">
-                    <video id="background-video">
-                        <source src="./assets/demo.mp4" type="video/mp4">
-                    </video>
                 </div>
                 <h1 class="title">
                     WELCOME!<br>
@@ -58,31 +55,33 @@
             </div>
         </section>
     </main>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
     <script>
         const playButton = document.querySelector('.play-button');
-        const playImg = document.querySelector('.play-img');
-        const imagePlaceholder = document.getElementById('image-placeholder');
-        const title = document.querySelector('.title');
-        const backgroundVideo = document.getElementById('background-video');
+        const modal = document.getElementById("myModal");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        const video = document.getElementById("video");
+        const youtubeURL = "https://www.youtube.com/embed/mUrlfwAKjQw";
 
         playButton.addEventListener('click', function() {
-            imagePlaceholder.style.display = 'none';
-            playButton.style.display = 'none';
-            playImg.style.display = 'none';
-            title.style.display = 'none';
-            backgroundVideo.style.display = 'block';
-            backgroundVideo.requestFullscreen();
-            backgroundVideo.play();
+            modal.style.display = "flex";
+            video.src = youtubeURL + "?autoplay=1";
         });
 
-        backgroundVideo.addEventListener('fullscreenchange', function() {
-            if (!document.fullscreenElement) {
-            backgroundVideo.pause();
-            backgroundVideo.style.display = 'none';
-            title.style.display = 'block';
-            imagePlaceholder.style.display = 'block';
-            playButton.style.display = 'flex';
-            playImg.style.display = 'inline-block';
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+            video.src = "";
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                video.src = "";
             }
         });
     </script>

@@ -6,4 +6,10 @@
     .social-link:hover {
         color: var(--text-accent);
     }
+    .close:hover,
+    .close:focus {
+        color: var(--text-accent);
+        text-decoration: none;
+        cursor: pointer;
+    }
 }

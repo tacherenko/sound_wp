@@ -67,7 +67,6 @@ a {
 .image-placeholder {
     display: block;
     width: 100%;
-    cursor: pointer;
     opacity: 0.5;
 }
 
@@ -94,15 +93,6 @@ a {
     height: 60px;
 }
 
-/* .play-button::before {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 40px;
-    background-image: url('./assets/play-circle-svgrepo-com.svg');
-    background-size: cover;
-    background-position: center;
-} */
 .play-img {
     width: 40px;
     height: 40px;
@@ -150,4 +140,41 @@ a {
     content: '|';
     margin-left: 20px; 
     color: var(--text-light);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    position: relative;
+    background-color: #000;
+    padding: 0;
+    border: none;
+    width: 90%;
+    max-width: 800px;
+}
+.modal-content iframe {
+    width: 100%;
+    height: 450px;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
 }
