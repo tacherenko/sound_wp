@@ -26,11 +26,11 @@
                 </div>
                 <nav class="header-menu">
                     <ul>
-                        <!-- <li><a href="" class="header-menu_link">demo reel</a></li> -->
-                        <li><a href="" class="header-menu_link">about</a></li>
-                        <li><a href="" class="header-menu_link">skills</a></li>
-                        <li><a href="" class="header-menu_link">experience</a></li>
-                        <li><a href="" class="header-menu_link">contact</a></li>
+                        <li><a href="#" id="demo-reel-link" class="header-menu_link link">demo reel</a></li>
+                        <li><a href="#about" class="header-menu_link link">about</a></li>
+                        <li><a href="#credits" class="header-menu_link link">credits</a></li>
+                        <!-- <li><a href="" class="header-menu_link">experience</a></li> -->
+                        <li><a href="#contact" class="header-menu_link link">contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -49,12 +49,61 @@
                 </h1>
                 <a class="play-button"><img src="./assets/play-circle-svgrepo-com.svg" alt="play" class="play-img">Play DemoReel</a>
                 <div class="hero-social">
-                    <a href="mailto:egorpoplevka@gmail.com" class="social-link email" target="_blank">egorpoplevka@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/egor-poplevka" class="social-link linkedin" target="_blank">LinkedIn</a>
+                    <a href="mailto:egorpoplevka@gmail.com" class="social-link email link" target="_blank">egorpoplevka@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/egor-poplevka" class="social-link linkedin link" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="subtitle">main information about me <br>
+                and what i love to do.</h2>
+                <p class="about-text">
+                    Hello everyone, I'm Egor Poplevka! I am currently living in Warsaw, working for Wargaming as a Sound Designer. With 8+ years of professional  experience as a sound designer I have worked on many projects in various genres (mostly action games). My expertise spans across all stages of the audio production process (from idea, to optimization). 
+                </p>
+                <div class="about-wrapper_img">
+                    <img src="./assets/main-img.jpg" alt="sound designer" class="main-img">
+                    <img src="./assets/aside-img.jpg" alt="media" class="aside-img">
+                </div>
+            </div>
+        </section>
+        <hr class="custom-hr">
+        <section class="skills">
+            <div class="container">
+                <div class="skills-wrapper">
+                    <div class="skills-text">
+                        <h3 class="subtitle-text">my skills</h3>
+                        <p class="skills-about"></p>
+                    </div>
+                    <div class="skills-info"></div>
                 </div>
             </div>
         </section>
     </main>
+    <hr class="custom-hr">
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="logo">
+                <img src="./assets/sound-svgrepo-com.svg" alt="logo" class="footer-logo">
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/egor-poplevka" class="social-link-footer link" target="_blank"><img src="./assets/linkedin.svg" alt="linkedin" class="footer-linkedin"></a>
+                </div>
+            </div>
+            <div class="footer-navigation">
+                <h3 class="footer-subtitle">navigation</h3>
+                    <ul class="footer-nav">
+                        <li><a href="#" id="demo-reel-link-footer" class="footer-menu_link link">demo reel</a></li>
+                        <li><a href="#about" class="footer-menu_link link">about</a></li>
+                        <li><a href="#credits" class="footer-menu_link link">credits</a></li>
+                        <li><a href="#contact" class="footer-menu_link link">contact</a></li>
+                    </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 class="footer-subtitle">contact</h3>
+                <a href="mailto:egorpoplevka@gmail.com" class="footer-contact-link link" target="_blank">email: egorpoplevka@gmail.com</a>
+            </div>
+        </div>
+    </footer>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -63,15 +112,21 @@
     </div>
     <script>
         const playButton = document.querySelector('.play-button');
+        const demoReelLink = document.getElementById('demo-reel-link');
+        const demoReelLinkFooter = document.getElementById('demo-reel-link-footer');
         const modal = document.getElementById("myModal");
         const closeBtn = document.getElementsByClassName("close")[0];
         const video = document.getElementById("video");
         const youtubeURL = "https://www.youtube.com/embed/mUrlfwAKjQw";
 
-        playButton.addEventListener('click', function() {
+        function openModal() {
             modal.style.display = "flex";
             video.src = youtubeURL + "?autoplay=1";
-        });
+        }
+
+        playButton.addEventListener('click', openModal);
+        demoReelLink.addEventListener('click', openModal);
+        demoReelLinkFooter.addEventListener('click', openModal);
 
         closeBtn.addEventListener('click', function() {
             modal.style.display = "none";
@@ -83,6 +138,15 @@
                 modal.style.display = "none";
                 video.src = "";
             }
+        });
+
+        document.querySelectorAll('.header-menu_link[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>

@@ -2,12 +2,14 @@
     --text-dark: #141414;
     --text-light: #FFFFFF;
     --text-accent: #FF7A18;
+    --gray-accent: #cccccc5e;
 }
 
 body {
     background-color: var(--text-dark);
     color: var(--text-light);
     font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
 }
 
 li {
@@ -17,6 +19,18 @@ li {
 a {
     text-decoration: none;
     color: var(--text-light);
+}
+
+.link {
+    transition: 0.5s ease-in-out;
+}
+
+.custom-hr {
+    border: none;
+    border-top: 1px solid var(--gray-accent); 
+    width: 60%; 
+    margin: 50px auto; 
+    margin-bottom: 100px;
 }
 
 .container  {
@@ -50,18 +64,10 @@ a {
 .header-menu_link {
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: 0.5s ease-in-out;
 }
 
-.header-logo-img {
+.header-logo-img, .footer-logo {
     width: 40px;
-}
-
-.video-container {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
 }
 
 .image-placeholder {
@@ -101,6 +107,7 @@ a {
 
 .hero-container {
     position: relative;
+    margin-bottom: 100px;
 }
 
 .title {
@@ -132,7 +139,6 @@ a {
 }
 
 .social-link {
-    transition: 0.5s ease-in-out;
     position: relative;
 }
 
@@ -151,7 +157,6 @@ a {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
@@ -177,4 +182,83 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s ease-in-out;
+}
+
+.about {
+    margin-bottom: 100px;
+}
+
+.subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.about-text {
+    max-width: 60%;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 21px;
+    margin-bottom: 60px;
+}
+
+.about-wrapper_img {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.main-img {
+    height: 700px;
+    margin-top: 10%;
+}
+
+.aside-img {
+    height: 500px;
+    position: absolute;
+    top: 0;
+    left: 10%;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.footer-linkedin {
+    width: 40px;
+}
+
+.footer-social {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.footer-nav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-menu_link {
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.footer-subtitle {
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    font-size: 22px;
 }
