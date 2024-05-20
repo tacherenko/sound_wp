@@ -8,6 +8,7 @@ body {
     background-color: var(--text-dark);
     color: var(--text-light);
     font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
 }
 
 li {
@@ -171,6 +172,10 @@ a {
     font-weight: bold;
     cursor: pointer;
     transition: 0.5s ease-in-out;
+}
+
+.about {
+    margin-bottom: 100px;
 }
 
 .subtitle {
