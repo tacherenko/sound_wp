@@ -8,4 +8,17 @@
         text-decoration: none;
         cursor: pointer;
     }
+
+    .credits-card:hover .credits-title {
+        opacity: 1;
+    }
+
+    .credits-card:hover::after {
+        opacity: 1;
+    }
+
+    .form-group button:hover {
+        color: var(--text-accent);
+        border: 1px solid var(--text-accent);
+    }
 }
