@@ -300,6 +300,52 @@ a {
     z-index: 1; 
 }
 
+.contact-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.subtitle-form {
+    text-align: left;
+}
+
+.form-container {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 500px;
+}
+        
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray-accent);
+    border-radius: 3px;
+    font-size: 18px;
+    background-color: transparent;
+}
+        
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+        
+.form-group button {
+    padding: 15px 30px;
+    background-color: transparent;
+    border: 1px solid var(--gray-accent);
+    border-radius: 3px;
+    color: var(--text-light);
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: 0.5s ease-in-out;
+}
+
 .footer-container {
     display: flex;
     flex-direction: row;
