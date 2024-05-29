@@ -22,3 +22,113 @@
         border: 1px solid var(--text-accent);
     }
 }
+
+@media (max-width: 768px) {
+    .header-menu {
+        display: none;
+    }
+    .burger-menu {
+        display: block;
+    }
+    .title,
+    .title-accent,
+    .title-text,
+    .hero-social,
+    .play-button,
+    .about-wrapper_img,
+    .skills-info {
+        display: none;
+    }
+
+    .title-mobile {
+        font-weight: 300;
+        text-transform: uppercase;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        text-align: center;
+    }
+    .title-mobile span {
+        font-size: 14px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+    .about-text {
+        font-size: 16px;
+        max-width: 100%;
+        line-height: 18px;
+        margin-bottom: 20px;
+    }
+    .custom-hr {
+        margin-bottom: 30px;
+    }
+    .skills-wrapper {
+        flex-direction: column;
+    }
+    .skills-text {
+        max-width: 100%;
+    }
+    .skills-about {
+        text-align: center;
+    }
+    .subtitle-text {
+        text-align: center;
+    }
+    .download-btn {
+        justify-content: center;
+    }
+    .credits-cards {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .credits-card {
+        max-width: 350px;
+        min-height: 500px;
+    }
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-group {
+        width: 300px;
+    }
+    .form-group button {
+        padding: 5px 15px;
+    }
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-navigation,
+    .footer-contact {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-nav li {
+        margin: 10px 0;
+    }
+
+    .footer-contact-link {
+        display: block;
+        margin-bottom: 10px;
+    }
+}

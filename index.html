@@ -33,9 +33,24 @@
                         <li><a href="#contact" class="header-menu_link link">contact</a></li>
                     </ul>
                 </nav>
+                <div class="burger-menu">
+                    <div class="burger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#" id="demo-reel-link-mobile" class="header-menu_link link">demo reel</a></li>
+            <li><a href="#about" class="header-menu_link link">about</a></li>
+            <li><a href="#credits" class="header-menu_link link">credits</a></li>
+            <li><a href="#contact" class="header-menu_link link">contact</a></li>
+        </ul>
+    </div>
     <main>
         <section class="hero">
             <div class="container hero-container">
@@ -46,6 +61,10 @@
                     WELCOME!<br>
                     <span class="title-accent">I'm a Sound Designer</span><br>
                     <span class="title-text">I make the complex simple.</span>
+                </h1>
+                <h1 class="title-mobile">
+                    Egor Poplevka <br>
+                    <span>sound designer</span>
                 </h1>
                 <a class="play-button"><img src="./assets/play-circle-svgrepo-com.svg" alt="play" class="play-img">Play DemoReel</a>
                 <div class="hero-social">
@@ -168,8 +187,29 @@
         </div>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerIcon = document.querySelector('.burger-icon');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const header = document.querySelector('.header');
+
+            burgerIcon.addEventListener('click', function() {
+                burgerIcon.classList.toggle('open');
+                mobileMenu.classList.toggle('open');
+                header.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-menu ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function () {
+                    burgerIcon.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    header.classList.remove('hidden');
+                });
+            });
+        });
+
         const playButton = document.querySelector('.play-button');
         const demoReelLink = document.getElementById('demo-reel-link');
+        const demoReelLinkMobile = document.getElementById('demo-reel-link-mobile');
         const demoReelLinkFooter = document.getElementById('demo-reel-link-footer');
         const modal = document.getElementById("myModal");
         const closeBtn = document.getElementsByClassName("close")[0];
@@ -182,8 +222,18 @@
         }
 
         playButton.addEventListener('click', openModal);
-        demoReelLink.addEventListener('click', openModal);
-        demoReelLinkFooter.addEventListener('click', openModal);
+        demoReelLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal();
+        });
+        demoReelLinkMobile.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal();
+        });
+        demoReelLinkFooter.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal();
+        });
 
         closeBtn.addEventListener('click', function() {
             modal.style.display = "none";
