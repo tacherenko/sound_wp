@@ -8,4 +8,12 @@
         text-decoration: none;
         cursor: pointer;
     }
+
+    .credits-card:hover .credits-title {
+        opacity: 1;
+    }
+
+    .credits-card:hover::after {
+        opacity: 1;
+    }
 }
