@@ -193,18 +193,57 @@
             <iframe id="video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
+    <div id="messageModal" class="modal">
+        <div class="modal-content_email">
+            <span class="close close-email">&times;</span>
+            <p id="modalMessage"></p>
+        </div>
+    </div>
     <script type="text/javascript">
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            emailjs.sendForm('service_39s7oua', 'template_8mrqiqf', '#contact-form')
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    // alert('Message sent successfully!');
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    // alert('Failed to send message.');
-                });
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById("messageModal");
+            const closeModal = document.getElementsByClassName("close close-email")[0];
+            const modalMessage = document.getElementById("modalMessage");
+
+            closeModal.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const name = document.getElementById('first-name').value;
+                
+                emailjs.sendForm('service_39s7oua', 'template_8mrqiqf', '#contact-form')
+                    .then(function(response) {
+                        modalMessage.innerHTML = `
+                                    <div>
+                                        <p>Hello, ${name}!</p>
+                                        <p>I received your message, thank you for writing. I will reply as soon as I can.</p>
+                                        <p>Have a good day!</p>
+                                        <p>Best regards,<br>Egor</p>
+                                    </div>
+                        `;
+                        modal.style.display = "flex";
+                    }, function(error) {
+                        modalMessage.innerHTML = `
+                                    <div>
+                                        <p>Hello, ${name}!</p>
+                                        <p>Unfortunately, an unexpected error occurred and I was unable to receive your message :(</p>
+                                        <p>Please email me instead. <br> <a href="mailto:egorpoplevka@gmail.com" class="link" target="_blank">egorpoplevka@gmail.com</a></p>
+                                        <p>Have a good day!</p>
+                                        <p>Best regards,<br>Egor</p>
+                                    </div>
+                        `;
+                        modal.style.display = "flex";
+                    });
+            });
         });
     </script>
     <script>
