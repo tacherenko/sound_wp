@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./media.css">
     <title>Egor Poplevka - Sound Designer</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" >
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "9WDoZJEPFFY2ByXWy",
+            });
+        })();
+    </script>
 </head>
 <body>
     <header class="header">
@@ -113,10 +123,10 @@
             <div class="container">
                 <h2 class="subtitle">credits</h2>
                 <div class="credits-cards">
-                    <div class="credits-card rushb">
+                    <div class="credits-card rushb" data-id="1">
                         <h3 class="credits-title">Project RushB</h3>
                     </div>
-                    <div class="credits-card battle">
+                    <div class="credits-card battle" data-id="2">
                         <h3 class="credits-title">Battle Prime <span>version 10.0</span></h3>
                     </div>
                 </div>
@@ -133,17 +143,14 @@
                     </div>
                     <div class="contact-form">
                         <div class="form-container">
-                                <form action="#" method="post">
+                            <form action="#" id="contact-form" method="post">
                                 <div class="form-group">
-                                    <!-- <label for="first-name">Имя:</label> -->
-                                    <input type="text" id="first-name" name="first-name" placeholder="Name Surname" required>
+                                    <input type="text" id="first-name" name="from_name" placeholder="Name Surname" required>
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="last-name">Фамилия:</label> -->
-                                    <input type="email" id="email" placeholder="Email" name="email" required>
+                                    <input type="email" id="email" name="from_email" placeholder="Email" required>
                                 </div>
                                 <div class="form-group">
-                                    <!-- <label for="message">Текст:</label> -->
                                     <textarea id="message" name="message" placeholder="Your message" required></textarea>
                                 </div>
                                 <div class="form-group">
@@ -186,6 +193,20 @@
             <iframe id="video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
+    <script type="text/javascript">
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            emailjs.sendForm('service_39s7oua', 'template_8mrqiqf', '#contact-form')
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    // alert('Message sent successfully!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    // alert('Failed to send message.');
+                });
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const burgerIcon = document.querySelector('.burger-icon');
@@ -206,6 +227,13 @@
                 });
             });
         });
+
+        document.querySelectorAll('.credits-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const cardId = card.getAttribute('data-id');
+                window.location.href = `card.html?id=${cardId}`;
+            })
+        })
 
         const playButton = document.querySelector('.play-button');
         const demoReelLink = document.getElementById('demo-reel-link');
