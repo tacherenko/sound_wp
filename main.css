@@ -237,7 +237,7 @@ a {
 #modalMessage p:last-child {
     text-align: right;
 }
-.link {
+.link-modal {
     color: var(--text-dark);
 }
 
