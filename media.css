@@ -131,4 +131,7 @@
         display: block;
         margin-bottom: 10px;
     }
+    .modal-content_email {
+        width: 85%;
+    }
 }

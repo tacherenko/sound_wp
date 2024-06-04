@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./media.css">
+  <title>Card Details</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="header-logo">
+                    <a href="index.html">
+                        <img src="./assets/sound-svgrepo-com.svg" alt="logo" class="header-logo-img">
+                    </a>
+                </div>
+                <nav class="header-menu">
+                    <ul>
+                        <li><a href="javascript:void(0);" id="demo-reel-link" class="header-menu_link link">demo reel</a></li>
+                        <li><a href="index.html#about" class="header-menu_link link">about</a></li>
+                        <li><a href="index.html#credits" class="header-menu_link link">credits</a></li>
+                        <!-- <li><a href="" class="header-menu_link">experience</a></li> -->
+                        <li><a href="index.html#contact" class="header-menu_link link">contact</a></li>
+                    </ul>
+                </nav>
+                <div class="burger-menu">
+                    <div class="burger-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="javascript:void(0);" id="demo-reel-link-mobile" class="header-menu_link link">demo reel</a></li>
+            <li><a href="index.html#about" class="header-menu_link link">about</a></li>
+            <li><a href="index.html#credits" class="header-menu_link link">credits</a></li>
+            <li><a href="index.html#contact" class="header-menu_link link">contact</a></li>
+        </ul>
+    </div>
+    <main>
+        <div class="container">
+            <div id="card-details">
+                <div id="video-container">
+                </div>
+                <h1 id="card-title"></h1>
+                <p id="card-description"></p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="logo">
+                <img src="./assets/sound-svgrepo-com.svg" alt="logo" class="footer-logo">
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/egor-poplevka" class="social-link-footer link" target="_blank"><img src="./assets/linkedin.svg" alt="linkedin" class="footer-linkedin"></a>
+                </div>
+            </div>
+            <div class="footer-navigation">
+                <h3 class="footer-subtitle">navigation</h3>
+                    <ul class="footer-nav">
+                        <li><a href="javascript:void(0);" id="demo-reel-link-footer" class="footer-menu_link link">demo reel</a></li>
+                        <li><a href="index.html#about" class="footer-menu_link link">about</a></li>
+                        <li><a href="index.html#credits" class="footer-menu_link link">credits</a></li>
+                        <li><a href="index.html#contact" class="footer-menu_link link">contact</a></li>
+                    </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 class="footer-subtitle">contact</h3>
+                <a href="mailto:egorpoplevka@gmail.com" class="footer-contact-link link" target="_blank">email: egorpoplevka@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="videoModal" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const cardId = urlParams.get('id');
+
+    const cardData = {
+        1: {
+            title: 'Card 1',
+            description: 'Description for Card 1',
+            videoId: 'FhOGRxSk6lg'
+        },
+        2: {
+            title: 'Card 2',
+            description: 'Description for Card 2',
+            videoId: 'VIDEO_ID_FOR_CARD_2'
+        },
+        3: {
+            title: 'Card 3',
+            description: 'Description for Card 3',
+            videoId: 'VIDEO_ID_FOR_CARD_3'
+        }
+    };
+
+    if (cardData[cardId]) {
+        const videoContainer = document.createElement('div');
+        videoContainer.innerHTML = `
+            <iframe width="1400" height="787" src="https://www.youtube.com/embed/${cardData[cardId].videoId}" frameborder="0" allowfullscreen></iframe>
+        `;
+        document.getElementById('video-container').appendChild(videoContainer);
+    
+        document.getElementById('card-title').textContent = cardData[cardId].title;
+        document.getElementById('card-description').textContent = cardData[cardId].description;
+        } else {
+            document.getElementById('card-title').textContent = 'Card Not Found';
+            document.getElementById('card-description').textContent = 'The card you are looking for does not exist.';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+            const burgerIcon = document.querySelector('.burger-icon');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const header = document.querySelector('.header');
+
+            burgerIcon.addEventListener('click', function() {
+                burgerIcon.classList.toggle('open');
+                mobileMenu.classList.toggle('open');
+                header.classList.toggle('hidden');
+            });
+
+            document.querySelectorAll('.mobile-menu ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function () {
+                    burgerIcon.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    header.classList.remove('hidden');
+                });
+            });
+        });
+        const playButton = document.querySelector('.play-button');
+        const demoReelLink = document.getElementById('demo-reel-link');
+        const demoReelLinkMobile = document.getElementById('demo-reel-link-mobile');
+        const demoReelLinkFooter = document.getElementById('demo-reel-link-footer');
+        const modal = document.getElementById("myModal");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        const videoModal = document.getElementById("videoModal");
+        const youtubeURL = "https://www.youtube.com/embed/mUrlfwAKjQw";
+
+        function openModal() {
+            modal.style.display = "flex";
+            videoModal.src = youtubeURL + "?autoplay=1";
+        }
+
+        playButton.addEventListener('click', openModal);
+        demoReelLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal();
+        });
+        demoReelLinkMobile.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal();
+        });
+        demoReelLinkFooter.addEventListener('click', function(event) {
+            event.preventDefault();
+            openModal();
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = "none";
+            video.src = "";
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                video.src = "";
+            }
+        });
+
+        document.querySelectorAll('[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+  </script>
+</body>
+</html>
