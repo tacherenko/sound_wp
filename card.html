@@ -54,10 +54,20 @@
     <main>
         <div class="container">
             <div id="card-details">
-                <div id="video-container">
+                <div id="image-container">
                 </div>
-                <h1 id="card-title"></h1>
-                <p id="card-description"></p>
+                <h1 id="card-title" class="card-title"></h1>
+                <div id="card-description" class="card-description">
+                    <div class="left-description">
+                        <p class="left-text"></p>
+                        <a target="_blank" class="link"></a>
+                    </div>
+                    <div class="right-description">
+                        <h2 class="subtitle-card"></h2>
+                        <p class="right-text"></p>
+                    </div>
+                </div>
+                <hr class="custom-hr">
             </div>
         </div>
     </main>
@@ -96,34 +106,50 @@
 
     const cardData = {
         1: {
-            title: 'Card 1',
-            description: 'Description for Card 1',
-            videoId: 'FhOGRxSk6lg'
-        },
+            title: 'Project RushB',
+            leftDescription: 'Project RushB is a 5v5 team-based first person hero shooter with bomb defuse mode.',
+            link: 'https://www.google.com/search?sca_esv=b46383386d0d5aa1&sca_upv=1&sxsrf=ADLYWIJRasRaPADMcNs2XLuJVODuxndw7Q:1717678444209&q=rushb+project+gameplay&tbm=vid&source=lnms&prmd=ivznb&sa=X&ved=2ahUKEwjqn4XsgseGAxUOHhAIHSB_BsUQ0pQJegQIDxAB&biw=1900&bih=1035&dpr=1#',
+            linkText: 'video gameplay',
+            subtitle: 'My role on it',
+            rightDescription: 'Right description for Project RushB',
+            imageUrl: './assets/rushb_card.jpeg'
+            },
         2: {
-            title: 'Card 2',
-            description: 'Description for Card 2',
-            videoId: 'VIDEO_ID_FOR_CARD_2'
-        },
-        3: {
-            title: 'Card 3',
-            description: 'Description for Card 3',
-            videoId: 'VIDEO_ID_FOR_CARD_3'
-        }
+            title: 'Battle prime',
+            leftDescription: 'Left description for Project RushB',
+            link: '',
+            linkText: 'More about Project RushB',
+            subtitle: 'My role on it',
+            rightDescription: '',
+            imageUrl: './assets/battleprime_card.jpeg'
+            },
     };
 
     if (cardData[cardId]) {
-        const videoContainer = document.createElement('div');
-        videoContainer.innerHTML = `
-            <iframe width="1400" height="787" src="https://www.youtube.com/embed/${cardData[cardId].videoId}" frameborder="0" allowfullscreen></iframe>
-        `;
-        document.getElementById('video-container').appendChild(videoContainer);
-    
+        const imageContainer = document.getElementById('image-container');
+        const imageElement = document.createElement('img');
+        imageElement.src = cardData[cardId].imageUrl;
+        imageElement.alt = cardData[cardId].title;
+        imageElement.className = 'image-placeholder';
+        imageContainer.appendChild(imageElement);
+
         document.getElementById('card-title').textContent = cardData[cardId].title;
-        document.getElementById('card-description').textContent = cardData[cardId].description;
-        } else {
-            document.getElementById('card-title').textContent = 'Card Not Found';
-            document.getElementById('card-description').textContent = 'The card you are looking for does not exist.';
+
+        const leftDescriptionElement = document.querySelector('.left-description .left-text');
+        leftDescriptionElement.textContent = cardData[cardId].leftDescription;
+
+        const linkElement = document.querySelector('.left-description a');
+        linkElement.href = cardData[cardId].link;
+        linkElement.textContent = cardData[cardId].linkText;
+
+        const subtitleElement = document.querySelector('.right-description .subtitle-card');
+        subtitleElement.textContent = cardData[cardId].subtitle;
+
+        const rightDescriptionElement = document.querySelector('.right-description .right-text');
+        rightDescriptionElement.textContent = cardData[cardId].rightDescription;
+    } else {
+        document.getElementById('card-title').textContent = 'Card Not Found';
+        document.getElementById('card-description').textContent = 'The card you are looking for does not exist.';
     }
 
     document.addEventListener('DOMContentLoaded', function() {

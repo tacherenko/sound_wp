@@ -245,7 +245,8 @@ a {
     margin-bottom: 100px;
 }
 
-.subtitle {
+.subtitle,
+.card-title {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     text-align: center;
@@ -534,4 +535,23 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.card-description {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+#card-title {
+    margin-top: 60px;
+}
+
+.left-description {
+    width: 60%;
+}
+
+.right-description {
+    width: 40%;
 }
