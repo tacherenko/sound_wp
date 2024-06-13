@@ -57,14 +57,17 @@
                 <div id="image-container">
                 </div>
                 <h1 id="card-title" class="card-title"></h1>
+                <div id="video-container" class="video-container">
+                    <iframe id="video-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 <div id="card-description" class="card-description">
                     <div class="left-description">
+                        <h2 class="subtitle-card"></h2>
                         <p class="left-text"></p>
-                        <a target="_blank" class="link"></a>
                     </div>
                     <div class="right-description">
                         <h2 class="subtitle-card"></h2>
-                        <p class="right-text"></p>
+                        <ul class="right-text"></ul>
                     </div>
                 </div>
                 <hr class="custom-hr">
@@ -107,21 +110,21 @@
     const cardData = {
         1: {
             title: 'Project RushB',
-            leftDescription: 'Project RushB is a 5v5 team-based first person hero shooter with bomb defuse mode.',
-            link: 'https://www.google.com/search?sca_esv=b46383386d0d5aa1&sca_upv=1&sxsrf=ADLYWIJRasRaPADMcNs2XLuJVODuxndw7Q:1717678444209&q=rushb+project+gameplay&tbm=vid&source=lnms&prmd=ivznb&sa=X&ved=2ahUKEwjqn4XsgseGAxUOHhAIHSB_BsUQ0pQJegQIDxAB&biw=1900&bih=1035&dpr=1#',
-            linkText: 'video gameplay',
+            leftDescription: 'Project RushB is a 5v5 FPS hero-based tactical shooter mobile game, with the classic Bomb Defusal as the core game mode.',
             subtitle: 'My role on it',
-            rightDescription: 'Right description for Project RushB',
-            imageUrl: './assets/rushb_card.jpeg'
+            subtitleL: 'About project',
+            rightDescription: ['First point', 'Second point', 'Third point'],
+            imageUrl: './assets/rushb_card.jpeg',
+            videoUrl: 'https://www.youtube.com/embed/ZFWytgPm8u0'
             },
         2: {
             title: 'Battle prime',
             leftDescription: 'Left description for Project RushB',
-            link: '',
-            linkText: 'More about Project RushB',
             subtitle: 'My role on it',
-            rightDescription: '',
-            imageUrl: './assets/battleprime_card.jpeg'
+            subtitleL: 'About project',
+            rightDescription: ['First point', 'Second point', 'Third point'],
+            imageUrl: './assets/battleprime_card.jpeg',
+            videoUrl: 'https://www.youtube.com/embed/example1'
             },
     };
 
@@ -135,18 +138,22 @@
 
         document.getElementById('card-title').textContent = cardData[cardId].title;
 
+        const videoPlayer = document.getElementById('video-player');
+        videoPlayer.src = cardData[cardId].videoUrl;
+        
         const leftDescriptionElement = document.querySelector('.left-description .left-text');
         leftDescriptionElement.textContent = cardData[cardId].leftDescription;
 
-        const linkElement = document.querySelector('.left-description a');
-        linkElement.href = cardData[cardId].link;
-        linkElement.textContent = cardData[cardId].linkText;
+        const subtitleElementL = document.querySelector('.left-description .subtitle-card');
+        subtitleElementL.textContent = cardData[cardId].subtitleL;
 
         const subtitleElement = document.querySelector('.right-description .subtitle-card');
         subtitleElement.textContent = cardData[cardId].subtitle;
 
         const rightDescriptionElement = document.querySelector('.right-description .right-text');
-        rightDescriptionElement.textContent = cardData[cardId].rightDescription;
+        const rightDescriptionList = cardData[cardId].rightDescription;
+
+        rightDescriptionElement.innerHTML = rightDescriptionList.map(item => `<li>${item}</li>`).join('');
     } else {
         document.getElementById('card-title').textContent = 'Card Not Found';
         document.getElementById('card-description').textContent = 'The card you are looking for does not exist.';

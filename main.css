@@ -320,6 +320,7 @@ a {
     transition:  0.5s ease-in-out;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .rushb {
@@ -421,7 +422,7 @@ a {
 }
 
 .footer-linkedin {
-    width: 40px;
+    width: 25px;
 }
 
 .footer-social {
@@ -444,7 +445,9 @@ a {
     font-size: 16px;
 }
 
-.footer-subtitle, .subtitle-text {
+.footer-subtitle, 
+.subtitle-text, 
+.subtitle-card {
     text-transform: uppercase;
     font-weight: 400;
     font-size: 22px;
@@ -526,10 +529,6 @@ a {
     text-align: center;
 }
 
-/* .hidden {
-    display: none;
-} */
-
 #video-container {
     margin: 0 auto;
     display: flex;
@@ -539,8 +538,11 @@ a {
 
 .card-description {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
     margin-bottom: 100px;
 }
 
@@ -548,10 +550,27 @@ a {
     margin-top: 60px;
 }
 
-.left-description {
-    width: 60%;
+.video-container {
+    width: 100%;
 }
 
-.right-description {
-    width: 40%;
+.video-container iframe {
+    width: 1000px;
+    height: 500px;
+    margin-bottom: 50px;
+}
+
+.left-description {
+    max-width: 60%;
+}
+
+.subtitle-card {
+    color: var(--text-accent);
+}
+
+.right-text {
+    padding-left: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
