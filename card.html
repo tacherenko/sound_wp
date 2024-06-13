@@ -54,10 +54,23 @@
     <main>
         <div class="container">
             <div id="card-details">
-                <div id="video-container">
+                <div id="image-container">
                 </div>
-                <h1 id="card-title"></h1>
-                <p id="card-description"></p>
+                <h1 id="card-title" class="card-title"></h1>
+                <div id="video-container" class="video-container">
+                    <iframe id="video-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div id="card-description" class="card-description">
+                    <div class="left-description">
+                        <h2 class="subtitle-card"></h2>
+                        <p class="left-text"></p>
+                    </div>
+                    <div class="right-description">
+                        <h2 class="subtitle-card"></h2>
+                        <ul class="right-text"></ul>
+                    </div>
+                </div>
+                <hr class="custom-hr">
             </div>
         </div>
     </main>
@@ -90,109 +103,6 @@
             <iframe id="videoModal" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const cardId = urlParams.get('id');
-
-    const cardData = {
-        1: {
-            title: 'Card 1',
-            description: 'Description for Card 1',
-            videoId: 'FhOGRxSk6lg'
-        },
-        2: {
-            title: 'Card 2',
-            description: 'Description for Card 2',
-            videoId: 'VIDEO_ID_FOR_CARD_2'
-        },
-        3: {
-            title: 'Card 3',
-            description: 'Description for Card 3',
-            videoId: 'VIDEO_ID_FOR_CARD_3'
-        }
-    };
-
-    if (cardData[cardId]) {
-        const videoContainer = document.createElement('div');
-        videoContainer.innerHTML = `
-            <iframe width="1400" height="787" src="https://www.youtube.com/embed/${cardData[cardId].videoId}" frameborder="0" allowfullscreen></iframe>
-        `;
-        document.getElementById('video-container').appendChild(videoContainer);
-    
-        document.getElementById('card-title').textContent = cardData[cardId].title;
-        document.getElementById('card-description').textContent = cardData[cardId].description;
-        } else {
-            document.getElementById('card-title').textContent = 'Card Not Found';
-            document.getElementById('card-description').textContent = 'The card you are looking for does not exist.';
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-            const burgerIcon = document.querySelector('.burger-icon');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const header = document.querySelector('.header');
-
-            burgerIcon.addEventListener('click', function() {
-                burgerIcon.classList.toggle('open');
-                mobileMenu.classList.toggle('open');
-                header.classList.toggle('hidden');
-            });
-
-            document.querySelectorAll('.mobile-menu ul li a').forEach(anchor => {
-                anchor.addEventListener('click', function () {
-                    burgerIcon.classList.remove('open');
-                    mobileMenu.classList.remove('open');
-                    header.classList.remove('hidden');
-                });
-            });
-        });
-        const playButton = document.querySelector('.play-button');
-        const demoReelLink = document.getElementById('demo-reel-link');
-        const demoReelLinkMobile = document.getElementById('demo-reel-link-mobile');
-        const demoReelLinkFooter = document.getElementById('demo-reel-link-footer');
-        const modal = document.getElementById("myModal");
-        const closeBtn = document.getElementsByClassName("close")[0];
-        const videoModal = document.getElementById("videoModal");
-        const youtubeURL = "https://www.youtube.com/embed/mUrlfwAKjQw";
-
-        function openModal() {
-            modal.style.display = "flex";
-            videoModal.src = youtubeURL + "?autoplay=1";
-        }
-
-        playButton.addEventListener('click', openModal);
-        demoReelLink.addEventListener('click', function(event) {
-            event.preventDefault();
-            openModal();
-        });
-        demoReelLinkMobile.addEventListener('click', function(event) {
-            event.preventDefault();
-            openModal();
-        });
-        demoReelLinkFooter.addEventListener('click', function(event) {
-            event.preventDefault();
-            openModal();
-        });
-
-        closeBtn.addEventListener('click', function() {
-            modal.style.display = "none";
-            video.src = "";
-        });
-
-        window.addEventListener('click', function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                video.src = "";
-            }
-        });
-
-        document.querySelectorAll('[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-  </script>
+    <script src="./js/main.js" type="module"></script>
 </body>
 </html>
