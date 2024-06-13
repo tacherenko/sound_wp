@@ -30,6 +30,11 @@
     .burger-menu {
         display: block;
     }
+    .hero-container, 
+    .image-container {
+        padding: 0;
+        margin-bottom: 60px;
+    }
     .title,
     .title-accent,
     .title-text,
@@ -55,14 +60,20 @@
     .title-mobile span {
         font-size: 14px;
     }
-    .subtitle {
+    .subtitle, 
+    .card-title {
         font-size: 20px;
     }
+    .about {
+        margin-bottom: 50px;
+    }
     .about-text {
-        font-size: 16px;
+        font-size: 14px;
+        padding: 15px;
         max-width: 100%;
         line-height: 18px;
         margin-bottom: 20px;
+        text-align: justify;
     }
     .custom-hr {
         margin-bottom: 30px;
@@ -73,8 +84,17 @@
     .skills-text {
         max-width: 100%;
     }
-    .skills-about {
-        text-align: center;
+    .skills-about, 
+    .contact-text,
+    .left-text {
+        font-size: 14px;
+        text-align: justify;
+        line-height: 16px;
+        padding: 15px;
+    }
+    .skills-about br, 
+    .contact-text br {
+        display: none;
     }
     .subtitle-text {
         text-align: center;
@@ -133,5 +153,33 @@
     }
     .modal-content_email {
         width: 85%;
+    }
+
+    .video-container iframe {
+        width: 300px;
+        height: 200px;
+        margin-bottom: 50px;
+    }
+
+    .card-description {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+    .left-description,
+    .right-description {
+        max-width: 100%;
+    }
+    .subtitle-card {
+        font-size: 20px;
+        text-align: center;
+    }
+    .right-text {
+        width: 350px;
+        font-size: 14px;
+        text-align: justify;
+        line-height: 16px;
+        padding: 15px;
     }
 }
